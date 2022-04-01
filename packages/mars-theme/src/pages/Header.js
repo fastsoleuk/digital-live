@@ -285,7 +285,7 @@ const Header = ({ state, libraries, actions }) => {
                 src={Logo}
                 width="100% !important"
                 height="30px !important"
-                alt={state.frontity.company_name + " LOGO"}
+                alt={state.frontity.company_name + " Home LOGO"}
               />
             </Link>
           </Text>
