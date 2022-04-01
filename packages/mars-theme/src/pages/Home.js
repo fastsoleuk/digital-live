@@ -88,7 +88,7 @@ function Home({ state, actions, libraries }) {
           data-rh="true"
           data-rh="true"
           name="thumbnail"
-          content="https://fastsole.co.uk/wp-content/uploads/2016/09/FastSole-Fev-01.png"
+          content="https://version2.fastsole.co.uk/wp-content/uploads/2016/09/FastSole-Fev-01.png"
           data-reactroot=""
         />
         <meta
@@ -199,7 +199,7 @@ function Home({ state, actions, libraries }) {
         {`{
           "@context": "https://schema.org",
           "@type": "Organization",
-          url: "https://dev.fastsole.co.uk",
+          url: "https://version2.fastsole.co.uk",
           sameAs: [
             "https://www.facebook.com/fastsole/",
             "https://www.instagram.com/fastsole/",
@@ -234,9 +234,9 @@ function Home({ state, actions, libraries }) {
               contactType: "Sales and advertising",
             },
           ],
-          "@id": "https://dev.fastsole.co.uk/#organization",
+          "@id": "https://version2.fastsole.co.uk/#organization",
           name: "Fast sole",
-          logo: "https://fastsole.co.uk/wp-content/themes/fs/img/logo.png",
+          logo: "https://version2.fastsole.co.uk/wp-content/themes/fs/img/logo.png",
         }`}
       </script>
 
