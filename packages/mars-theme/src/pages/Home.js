@@ -36,7 +36,6 @@ import FeaturedMedia from "../Utils/FeaturedMedia";
 import ImageView from "../Utils/ImageView";
 import { motion } from "framer-motion";
 import { css } from "frontity";
-// import Slider1 from "../component/slider/slider1";
 // import Link from "@frontity/components/link";
 //import ImageViewFeatured from "../../src/Utils/ImageViewFeatured";
 //import BrandList from "../component/BrandList";
