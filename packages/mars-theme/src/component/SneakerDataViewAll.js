@@ -81,6 +81,7 @@ const SneakersDataViewAll = ({ state, actions, libraries, itemId, type }) => {
     isOpen: isDateOpen,
   } = useDisclosure();
   const demoArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+  //const demoArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32];
   if (type == "comingsoon") {
     var tempType = "comingsoon";
   } else {
@@ -89,7 +90,7 @@ const SneakersDataViewAll = ({ state, actions, libraries, itemId, type }) => {
 
   const [stockValue, setStockValue] = useState({
     brandId: itemId,
-    totalProduct: 20,
+    totalProduct: 32,
     priceMin: 0,
     priceMax: 500,
     status: tempType,
@@ -134,7 +135,7 @@ const SneakersDataViewAll = ({ state, actions, libraries, itemId, type }) => {
     setCurrentPage(1);
   };
 
-  console.log("stock value :", stockValue);
+  //console.log("stock value :", stockValue);
 
   const brandChange = (e) => {
     var value = parseInt(e);
@@ -159,7 +160,7 @@ const SneakersDataViewAll = ({ state, actions, libraries, itemId, type }) => {
 
   const convertDate = (event) => {
     const tempDate = JSON.stringify(event);
-    const finalDate = tempDate.slice(1, 11);
+    const finalDate = tempDate.slice(1, 32);
     var intDate = finalDate.split("-").join("");
     return intDate;
   };
@@ -191,13 +192,13 @@ const SneakersDataViewAll = ({ state, actions, libraries, itemId, type }) => {
   }, [itemId, choosedate]);
 
   const fetchData = async (slug) => {
-    console.log("items available for post =", slug);
+    //aureate_console.log("items available for post =", slug);
     actions.sneakerReleaseDates.notoggleLoading();
 
     const response = await libraries.source.api.get({
       endpoint: `/wl/v1/On-focus-items/${slug}`,
     });
-    console.log("endpoint :", `/wl/v1/On-focus-items/${slug}`);
+    //aureate_console.log("endpoint :", `/wl/v1/On-focus-items/${slug}`);
     const result = await response.json();
     actions.sneakerReleaseDates.toggleLoading();
     actions.sneakerReleaseDates.updatePostData(result);
@@ -207,10 +208,10 @@ const SneakersDataViewAll = ({ state, actions, libraries, itemId, type }) => {
   let totalCount = state.sneakerReleaseDates.postData.totalPost;
 
   // pagination component start
-  var dataLimit = 20;
-  if (totalCount >= 26) {
+  var dataLimit = 32;
+  if (totalCount >= 66) {
     var pageLimit = 3;
-  } else if (totalCount >= 12 && totalCount < 25) {
+  } else if (totalCount >= 32 && totalCount < 65) {
     var pageLimit = 2;
   } else {
     var pageLimit = 1;
@@ -218,7 +219,7 @@ const SneakersDataViewAll = ({ state, actions, libraries, itemId, type }) => {
 
   const [pages] = useState(Math.round(totalCount / dataLimit));
   const [currentPage, setCurrentPage] = useState(1);
-  const [dataLength, setDataLength] = useState({ min: 0, max: 12 });
+  const [dataLength, setDataLength] = useState({ min: 0, max: 32 });
 
   const doubleRight = () => {
     setCurrentPage(pages);
@@ -254,14 +255,14 @@ const SneakersDataViewAll = ({ state, actions, libraries, itemId, type }) => {
   ]);
 
   const updateIndex = async () => {
-    setDataLength({ min: 0, max: 12 });
+    setDataLength({ min: 0, max: 32 });
     setCurrentPage(1);
   };
 
   const getPaginationData = async () => {
     const startIndex = currentPage * dataLimit - dataLimit;
     const endIndex = startIndex + dataLimit;
-    console.log("curret page :", startIndex, endIndex);
+    //aureate_console.log("curret page :", startIndex, endIndex);
     const tempArr = {
       brandId: stockValue.brandId,
       totalProduct: endIndex,
@@ -307,7 +308,7 @@ const SneakersDataViewAll = ({ state, actions, libraries, itemId, type }) => {
 
   // get input data from release calendar
   let shortDropDown = (value) => {
-    console.log("drop down value :", value);
+    //aureate_console.log("drop down value :", value);
     setDropdown(value);
     const tempArr = {
       brandId: stockValue.brandId,
@@ -1557,7 +1558,7 @@ const SneakersDataViewAll = ({ state, actions, libraries, itemId, type }) => {
                     </span>
                     {
                       /* show page numbers */
-                      console.log("current page new:", currentPage)
+                      //aureate_console.log("current page new:", currentPage)
                     }
                     {getPaginationGroup().map((item, index) => (
                       <Circle

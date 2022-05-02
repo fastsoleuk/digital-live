@@ -74,7 +74,7 @@ const SneakersDataForBrand = ({
 }) => {
   const [stockValue, setStockValue] = useState({
     brandId: itemId,
-    totalProduct: 20,
+    totalProduct: 32,
     priceMin: 0,
     priceMax: 500,
     status: "instock",
@@ -185,18 +185,18 @@ const SneakersDataForBrand = ({
     brandDataFetch();
     fetchData(slug);
 
-    console.log("slug data : ", slug);
+    //aureate_console.log("slug data : ", slug);
   }, [stockValue, choosedate]);
 
   useEffect(() => {
     var slug = `${itemId}-${stockValue.totalProduct}-${stockValue.priceMin}-${stockValue.priceMax}-${stockValue.status}-${stockValue.date}-${stockValue.sortBy}-${stockValue.color}-${choosedate}`;
     fetchData(slug);
     setCurrentPage(1);
-    console.log("slug data : ", slug);
+    //aureate_console.log("slug data : ", slug);
   }, [itemId, choosedate]);
 
   const fetchData = async (slug) => {
-    console.log("fetchData", slug);
+    //aureate_console.log("fetchData", slug);
     actions.sneakerReleaseDates.notoggleLoading();
     const response = await libraries.source.api.get({
       endpoint: `/wl/v1/sneaker-release-dates-test/${slug}`,
@@ -212,10 +212,10 @@ const SneakersDataForBrand = ({
   let totalCount = state.sneakerReleaseDates.postData.totalPost;
 
   // pagination component start
-  var dataLimit = 12;
-  if (totalCount >= 26) {
+  var dataLimit = 32;
+  if (totalCount >= 66) {
     var pageLimit = 3;
-  } else if (totalCount >= 12 && totalCount < 25) {
+  } else if (totalCount >= 32 && totalCount < 65) {
     var pageLimit = 2;
   } else {
     var pageLimit = 1;
@@ -223,7 +223,7 @@ const SneakersDataForBrand = ({
 
   const [pages] = useState(Math.ceil(totalCount / dataLimit));
 
-  const [dataLength, setDataLength] = useState({ min: 0, max: 12 });
+  const [dataLength, setDataLength] = useState({ min: 0, max: 32 });
 
   const doubleRight = () => {
     setCurrentPage(pages);
@@ -259,14 +259,14 @@ const SneakersDataForBrand = ({
   ]);
 
   const updateIndex = async () => {
-    setDataLength({ min: 0, max: 12 });
+    setDataLength({ min: 0, max: 32 });
     setCurrentPage(1);
   };
 
   const getPaginationData = async () => {
     const startIndex = currentPage * dataLimit - dataLimit;
     const endIndex = startIndex + dataLimit;
-    console.log("curret page :", startIndex, endIndex);
+    //aureate_console.log("curret page :", startIndex, endIndex);
     const tempArr = {
       brandId: stockValue.brandId,
       totalProduct: endIndex,
@@ -286,7 +286,7 @@ const SneakersDataForBrand = ({
     return new Array(pageLimit).fill().map((_, idx) => start + idx + 1);
   };
   const stockChange = (value) => {
-    console.log("filter array", filter);
+    //aureate_console.log("filter array", filter);
     var tempFilter = {
       sneaker_status: value,
       color: "",
@@ -1476,7 +1476,7 @@ const SneakersDataForBrand = ({
                     </span>
                     {
                       /* show page numbers */
-                      console.log("current page new:", pages)
+                      //aureate_console.log("current page new:", pages)
                     }
                     {getPaginationGroup().map((item, index) => (
                       <Circle

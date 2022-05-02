@@ -100,7 +100,7 @@ export default function MainHeader() {
   ];
 
   const searchSlug = `/searchresult-for/${inputValue}`;
-  console.log("always", inputValue);
+  //aureate_console.log("always", inputValue);
 
   const clickSearch = () => {
     let data = $("#input").val();
@@ -273,7 +273,7 @@ export default function MainHeader() {
 
                                         setinputValue(result);
                                         // inputValue = data;
-                                        console.log(inputValue);
+                                        //aureate_console.log(inputValue);
                                       }}
                                       bg="#F3F4F7"
                                       color="#666666"

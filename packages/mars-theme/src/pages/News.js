@@ -12,6 +12,7 @@ import {
   Button,
   VStack,
 } from "@chakra-ui/react";
+import { loadable } from "frontity";
 import { Image } from "@chakra-ui/image";
 import {
   FaArrowDown,
@@ -35,15 +36,19 @@ import {
   PageGroup,
   usePaginator,
 } from "chakra-paginator";
-import Phoneslider from "../component/Phoneslider";
+//import Phoneslider from "../component/Phoneslider";
 import Link from "@frontity/components/link";
 import connect from "@frontity/connect";
-import ImageViewFeatured from "../../src/Utils/ImageViewFeatured";
-import Breadcrumb from "../component/Breadcrumb";
+//import ImageViewFeatured from "../../src/Utils/ImageViewFeatured";
+//import Breadcrumb from "../component/Breadcrumb";
 
-import Moment from "moment";
 import dayjs from "dayjs";
 import { ArrowDownIcon, ArrowUpIcon } from "@chakra-ui/icons";
+
+
+const Phoneslider = loadable(() => import('../component/Phoneslider'))
+const ImageViewFeatured = loadable(() => import('../../src/Utils/ImageViewFeatured'))
+const Breadcrumb = loadable(() => import('../component/Breadcrumb'))
 
 const News = ({ state, actions, libraries }) => {
   const Html2React = libraries.html2react.Component;
@@ -119,7 +124,7 @@ const News = ({ state, actions, libraries }) => {
   const pageData = state.source.get(state.router.link);
   // const schemaData = pageData.schemaData && pageData.schemaData;
 
-  console.log("schemadataa", state.router.link);
+  //aureate_console.log("schemadataa", state.router.link);
   const [readMore, setreadMore] = useState(false);
   const [schemaData, setschemaData] = useState(false);
 
@@ -143,7 +148,7 @@ const News = ({ state, actions, libraries }) => {
     fetchData();
   }, [dataLoaded]); //update by santosh
 
-  console.log("checkschema", state.newsSchema.postData);
+  //aureate_console.log("checkschema", state.newsSchema.postData);
 
   return (
     <>
@@ -339,7 +344,7 @@ const News = ({ state, actions, libraries }) => {
                 <VStack alignItems="normal" justifyContent={"space-between"}>
                   {data.items.slice(2, 5).map(({ type, id }) => {
                     const item = state.source[type][id];
-                    console.log("myhomepage", item);
+                    //aureate_console.log("myhomepage", item);
 
                     if (item.status == "instock") {
                       var status = (
@@ -673,7 +678,7 @@ const News = ({ state, actions, libraries }) => {
                 </span>
                 {
                   /* show page numbers */
-                  console.log("current page new:", currentPageClick)
+                  //aureate_console.log("current page new:", currentPageClick)
                 }
                 {getPaginationGroup().map((item, index) => (
                   <Circle

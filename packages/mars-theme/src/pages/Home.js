@@ -24,13 +24,13 @@ import {
   FaRegHeart,
   FaChevronRight,
 } from "react-icons/fa";
-import ComingSoonSlider from "../component/ComingSoonSlider";
-import FocusOnSlider from "../component/FocusOnSlider";
-import TopBrandSlider from "../component/TopBrandSlider";
-import FooterComponent from "../component/FooterComponent";
-import { connect, Head } from "frontity";
+import { connect, Head, loadable } from "frontity";
+//import ComingSoonSlider from "../component/ComingSoonSlider";
+//import FocusOnSlider from "../component/FocusOnSlider";
+//import TopBrandSlider from "../component/TopBrandSlider";
+//import FooterComponent from "../component/FooterComponent";
 import Link from "@frontity/components/link";
-import HomeMobileBanner from "../component/HomeMobileBanner";
+//import HomeMobileBanner from "../component/HomeMobileBanner";
 import dayjs from "dayjs";
 import FeaturedMedia from "../Utils/FeaturedMedia";
 import ImageView from "../Utils/ImageView";
@@ -38,11 +38,24 @@ import { motion } from "framer-motion";
 import { css } from "frontity";
 // import Slider1 from "../component/slider/slider1";
 // import Link from "@frontity/components/link";
-import ImageViewFeatured from "../../src/Utils/ImageViewFeatured";
-import BrandList from "../component/BrandList";
-import ViewAllbtn from "../component/ViewAllbtn";
-import ViewAllMobile from "../component/ViewAllMobile";
+//import ImageViewFeatured from "../../src/Utils/ImageViewFeatured";
+//import BrandList from "../component/BrandList";
+//import ViewAllbtn from "../component/ViewAllbtn";
+//import ViewAllMobile from "../component/ViewAllMobile";
 import Skbrand from "../component/Skeleton/skbrand";
+
+const ComingSoonSlider = loadable(() => import('../component/ComingSoonSlider'))
+const FocusOnSlider = loadable(() => import('../component/FocusOnSlider'))
+const TopBrandSlider = loadable(() => import('../component/TopBrandSlider'))
+const BrandList = loadable(() => import('../component/BrandList'))
+const FooterComponent = loadable(() => import('../component/FooterComponent'))
+
+const ViewAllbtn = loadable(() => import('../component/ViewAllbtn'))
+const ViewAllMobile = loadable(() => import('../component/ViewAllMobile'))
+
+const ImageViewFeatured = loadable(() => import('../../src/Utils/ImageViewFeatured'))
+const HomeMobileBanner = loadable(() => import('../component/HomeMobileBanner'))
+
 
 function useHover() {
   const [hovering, setHovering] = useState(false);
@@ -88,7 +101,7 @@ function Home({ state, actions, libraries }) {
           data-rh="true"
           data-rh="true"
           name="thumbnail"
-          content="https://version2.fastsole.co.uk/wp-content/uploads/2016/09/FastSole-Fev-01.png"
+          content="https://dev2.fastsole.co.uk/wp-content/uploads/2016/09/FastSole-Fev-01.png"
           data-reactroot=""
         />
         <meta
@@ -199,7 +212,7 @@ function Home({ state, actions, libraries }) {
         {`{
           "@context": "https://schema.org",
           "@type": "Organization",
-          url: "https://version2.fastsole.co.uk",
+          url: "https://dev2.fastsole.co.uk",
           sameAs: [
             "https://www.facebook.com/fastsole/",
             "https://www.instagram.com/fastsole/",
@@ -234,115 +247,11 @@ function Home({ state, actions, libraries }) {
               contactType: "Sales and advertising",
             },
           ],
-          "@id": "https://version2.fastsole.co.uk/#organization",
+          "@id": "https://dev2.fastsole.co.uk/#organization",
           name: "Fast sole",
-          logo: "https://version2.fastsole.co.uk/wp-content/themes/fs/img/logo.png",
+          logo: "https://dev2.fastsole.co.uk/wp-content/themes/fs/img/logo.png",
         }`}
       </script>
-
-      {/* {schemaData !== undefined && schemaData !== null ? (
-        <Head>
-          {schemaData.meta && <title>{schemaData.meta.title}</title>}
-          <meta
-            data-rh="true"
-            name="thumbnail"
-            content={schemaData.meta.favicon}
-            data-reactroot=""
-          />
-          <meta
-            data-rh="true"
-            name="viewport"
-            content="width=device-width, initial-scale=1"
-            data-reactroot=""
-          />
-          <meta
-            data-rh="true"
-            property="fb:app_id"
-            content=""
-            data-reactroot=""
-          />
-          <meta data-rh="true" charSet="utf-8" data-reactroot="" />
-          <meta
-            data-rh="true"
-            property="og:locale"
-            content="en_GB"
-            data-reactroot=""
-          />
-          <meta
-            data-rh="true"
-            property="og:type"
-            content="website"
-            data-reactroot=""
-          />
-          <meta
-            data-rh="true"
-            property="og:site_name"
-            content={schemaData.meta.sitename}
-            data-reactroot=""
-          />
-          <meta
-            data-rh="true"
-            name="twitter:card"
-            content="summary"
-            data-reactroot=""
-          />
-          <meta
-            data-rh="true"
-            name="twitter:site"
-            content={schemaData.meta.twitter}
-            data-reactroot=""
-          />
-          <meta
-            data-rh="true"
-            name="twitter:creator"
-            content={schemaData.meta.twitter}
-            data-reactroot=""
-          />
-          <meta
-            data-rh="true"
-            name="description"
-            content={schemaData.meta.description}
-            data-reactroot=""
-          />
-          <meta
-            data-rh="true"
-            property="og:title"
-            content={schemaData.meta.title}
-            data-reactroot=""
-          />
-          <meta
-            data-rh="true"
-            property="og:description"
-            content={schemaData.meta.description}
-            data-reactroot=""
-          />
-          <meta
-            data-rh="true"
-            property="og:url"
-            content={schemaData.meta.sitename}
-            data-reactroot=""
-          />
-          <meta
-            data-rh="true"
-            name="twitter:title"
-            content={schemaData.meta.titleTwitter}
-            data-reactroot=""
-          />
-          <meta
-            data-rh="true"
-            name="twitter:description"
-            content={schemaData.meta.description}
-            data-reactroot=""
-          />
-          {schemaData.schema && (
-            <script type="application/ld+json">
-              {`
-             ${schemaData.schema}
-             `}
-            </script>
-          )}
-        </Head>
-      ) : null} */}
 
       <Stack mx={{ base: "6", md: "16", lg: "40" }}>
         <Stack my={6} mx={2} display={{ base: "none", md: "none", lg: "grid" }}>
@@ -402,7 +311,7 @@ function Home({ state, actions, libraries }) {
               <VStack alignItems="normal" justifyContent={"space-between"}>
                 {data.slice(2, 5).map(({ type, id }) => {
                   const item = state.source[type][id];
-                  console.log("myhomepage", item);
+                  //aureate_console.log("myhomepage", item);
 
                   if (item.status == "instock") {
                     var status = (
