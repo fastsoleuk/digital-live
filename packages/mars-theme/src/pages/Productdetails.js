@@ -27,6 +27,7 @@ const ViewAllMobile = loadable(() => import("../component/ViewAllMobile"));
 const CardDetails = loadable(() => import("../component/CardDetails"));
 // const Breadcrumb = loadable(() => import("../component/Breadcrumb"));
 import Breadcrumb from "../component/Breadcrumb";
+import ErrorPage from "../pages/ErrorPage";
 import {
   FaCheckCircle,
   FaChevronDown,
@@ -415,7 +416,11 @@ const Productdetails = ({ state, libraries, actions }) => {
         <div></div>
       )}
 
-      {seoData.main && (
+      {/* {seoData === undefined && seoData === null ? <ErrorPage when={pageData.isError}/> : 'dsa'} */}
+
+     
+      {/* {seoData.main.title == null ? <ErrorPage when={pageData.isError}/> :  */}
+      {seoData.main.title == null ? <ErrorPage when={pageData.isError}/> : 
         <Box mx={{ base: "6", md: "16", lg: "40" }}>
           {/* product image slider for mobile */}
           <Box textAlign="center" mt="5" mb="5">
@@ -815,7 +820,10 @@ const Productdetails = ({ state, libraries, actions }) => {
             </Box>
           </Box>
         </Box>
-      )}
+      }
+      
+
+
     </>
   );
 };
